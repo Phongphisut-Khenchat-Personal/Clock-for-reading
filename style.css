@@ -1,0 +1,331 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Itim', cursive;
+}
+
+body {
+    background-color: #fdf1ea;
+    color: #a67f65;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.5s;
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Background Animation Elements */
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.balloon {
+    position: absolute;
+    width: 40px;
+    height: 50px;
+    background: rgba(166, 127, 101, 0.2);
+    border-radius: 50%;
+    animation: float 15s infinite;
+}
+
+.balloon:nth-child(1) { left: 10%; animation-delay: 0s; }
+.balloon:nth-child(2) { left: 50%; animation-delay: -5s; }
+.balloon:nth-child(3) { left: 80%; animation-delay: -10s; }
+
+.book {
+    position: absolute;
+    width: 30px;
+    height: 40px;
+    background: rgba(133, 96, 63, 0.15);
+    animation: spin 20s infinite;
+}
+
+.book:nth-child(4) { right: 20%; animation-delay: -7s; }
+.book:nth-child(5) { left: 30%; animation-delay: -14s; }
+
+.leaf {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(166, 127, 101, 0.15);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    animation: falling 12s infinite linear;
+}
+
+.leaf:nth-child(6) { left: 15%; animation-delay: -2s; }
+.leaf:nth-child(7) { left: 45%; animation-delay: -6s; }
+.leaf:nth-child(8) { left: 75%; animation-delay: -9s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-100vh) rotate(180deg); }
+}
+
+@keyframes spin {
+    0% { transform: translateY(100vh) rotate(0deg); }
+    100% { transform: translateY(-100vh) rotate(360deg); }
+}
+
+@keyframes falling {
+    0% { transform: translateY(-100px) rotate(0deg); }
+    100% { transform: translateY(100vh) rotate(720deg); }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    width: 100%;
+    z-index: 1;
+}
+
+.card {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(166, 127, 101, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(166, 127, 101, 0.15);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal.active {
+    display: flex;
+    /* ลบการแอนิเมชั่นออก */
+}
+
+.modal-content {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    /* ลบการแอนิเมชั่นออก */
+    transform: scale(1);  /* ให้แสดงขนาดปกติ */
+    opacity: 1; /* ให้ปรากฏชัดเจน */
+}
+
+
+@keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalContentZoom {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.clock-section {
+    text-align: center;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    color: #a67f65;
+}
+
+.icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.icon:hover {
+    transform: scale(1.2);
+}
+
+#date {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #a67f65;
+}
+
+.time {
+    font-size: 3.5rem;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    color: #85603f;
+}
+
+.colon {
+    animation: blink 1.5s infinite;
+}
+
+.timer-section {
+    text-align: center;
+}
+
+h2 {
+    color: #85603f;
+}
+
+.timer-display {
+    font-size: 2.5rem;
+    margin: 20px 0;
+    color: #85603f;
+}
+
+.timer-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #a67f65;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.button:hover {
+    background-color: #85603f;
+    transform: translateY(-2px);
+}
+
+.timer-input {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+input {
+    width: 90px;
+    padding: 8px;
+    border: 1px solid #a67f65;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1rem;
+    color: #85603f;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+input::placeholder {
+    color: #a67f65;
+    opacity: 0.7;
+}
+
+.quote {
+    text-align: center;
+    font-style: italic;
+    color: #a67f65;
+    margin-top: 10px;
+}
+
+.floating {
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+@keyframes floating {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #2d1810;
+}
+
+body.dark-mode .card {
+    background-color: #3d2317;
+    color: #deb887;
+}
+
+body.dark-mode .time,
+body.dark-mode .timer-display,
+body.dark-mode h2 {
+    color: #fdf1ea;
+}
+
+body.dark-mode .icons,
+body.dark-mode #date,
+body.dark-mode .quote {
+    color: #deb887;
+}
+
+body.dark-mode input {
+    background-color: rgba(61, 35, 23, 0.8);
+    border-color: #deb887;
+    color: #fdf1ea;
+}
+
+body.dark-mode input::placeholder {
+    color: #deb887;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    .time {
+        font-size: 2.8rem;
+    }
+    .timer-display {
+        font-size: 2rem;
+    }
+    .button {
+        padding: 8px 16px;
+    }
+}
+
+/* Confetti Animation */
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    animation: confetti-fall 3s linear forwards;
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-100%) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}

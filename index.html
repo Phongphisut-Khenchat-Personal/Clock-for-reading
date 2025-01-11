@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Clock & Timer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.36/moment-timezone-with-data.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-duration-format/2.3.2/moment-duration-format.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Animation Elements -->
+    <div class="background-animation">
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="book"></div>
+        <div class="book"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+    </div>
+
+    <!-- Timer Completion Modal -->
+    <div id="completionModal" class="modal">
+        <div class="modal-content">
+            <h2>Time's Up! 🎉</h2>
+            <p>Your reading session is complete!</p>
+            <br>
+            <button class="button" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Clock Card -->
+        <div class="card clock-section">
+            <div class="icons">
+                <i class="fas fa-book-reader icon floating"></i>
+                <i class="fas fa-moon icon" id="darkModeToggle"></i>
+            </div>
+            <div id="date">Monday, 26 September 2024</div>
+            <div class="time">
+                <span id="hours">00</span>
+                <span class="colon">:</span>
+                <span id="minutes">00</span>
+                <span class="colon">:</span>
+                <span id="seconds">00</span>
+            </div>
+            <div class="quote">"The best moments in reading are when you come across something that you'd thought special and particular to you."</div>
+        </div>
+
+        <!-- Timer Card -->
+        <div class="card timer-section">
+            <h2>Reading Timer</h2>
+            <br>
+            <div class="timer-input">
+                <input type="number" id="hours-input" placeholder="Hours" min="0" max="23">
+                <input type="number" id="minutes-input" placeholder="Minutes" min="0" max="59">
+                <input type="number" id="seconds-input" placeholder="Seconds" min="0" max="59">
+            </div>
+            <div class="timer-display" id="timer">00:00:00</div>
+            <div class="timer-controls">
+                <button class="button" id="startTimer">Start</button>
+                <button class="button" id="pauseTimer">Pause</button>
+                <button class="button" id="resetTimer">Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
