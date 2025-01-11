@@ -20,7 +20,7 @@
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/reading-clock-timer.git
+git clone https://github.com/Phongphisut-Khenchat-Personal/Clock-for-reading.git
 ```
 
 2. Open `index.html` in your web browser.
