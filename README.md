@@ -16,6 +16,10 @@
 - 📱 Fully responsive design
 - 💫 Smooth transitions and hover effects
 
+## 🚀 Github Page
+Click this: [Clock-For-Reading](https://phongphisut-khenchat-personal.github.io/Clock-for-reading.github.io/)
+
+
 ## 🚀 Getting Started
 
 1. Clone the repository:
